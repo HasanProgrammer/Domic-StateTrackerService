@@ -1,0 +1,63 @@
+name: 'state_tracker_service'
+
+services:
+  
+  domic.state.tracker.api:
+    networks:
+      - domic
+    image: state_tracker_service:1.0.0
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+        reservations:
+          memory: 150M
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "1140-1160:443"
+    volumes:
+      - log:/app/CoreLogs
+      - ~\.aspnet\https\:/https/
+    environment:
+      - E-RabbitMQ-Host=host.docker.internal
+      - E-RabbitMQ-Port=5672
+      - E-RabbitMQ-Username=guest
+      - E-RabbitMQ-Password=guest
+      - I-RabbitMQ-Host=
+      - I-RabbitMQ-Port=
+      - I-RabbitMQ-Username=
+      - I-RabbitMQ-Password=
+      - RedisConnectionString=
+      - MongoConnectionString=mongodb://sa:Hasan313313!!@domic.state.tracker.mongo:27017
+      - C-SqlServerConnectionString=
+      - Q-SqlServerConnectionString=
+      - Host=domic.state.tracker.api
+      - Port=443
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Dotris313@313%%
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Karami.WebAPI.pfx
+    depends_on: 
+      - domic.state.tracker.mongo
+  
+  domic.state.tracker.mongo:
+    networks:
+      - domic
+    image: mongo
+    container_name: 'state_tracker_mongo'
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sa
+      - MONGO_INITDB_ROOT_PASSWORD=Hasan313313!!
+
+volumes:
+  log:
+    
+networks:
+  domic:
+    external: true
