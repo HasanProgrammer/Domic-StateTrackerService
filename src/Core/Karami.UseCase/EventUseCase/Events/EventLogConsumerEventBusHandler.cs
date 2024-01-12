@@ -1,6 +1,5 @@
 ﻿using Karami.Core.Domain.Contracts.Interfaces;
 using Karami.Core.Domain.Entities;
-using Karami.Core.UseCase.Attributes;
 using Karami.Core.UseCase.Contracts.Interfaces;
 
 namespace Karami.UseCase.EventUseCase.Events;
@@ -12,7 +11,6 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
     public EventLogConsumerEventBusHandler(IEventQueryRepository eventQueryRepository) 
         => _eventQueryRepository = eventQueryRepository;
     
-    [WithMaxRetry(Count = 5)]
     public void Handle(Event message)
     {
         var eventQuery = new EventQuery {

@@ -21,6 +21,7 @@ public class EventConsumerJob : IHostedService
         _messageBroker.Subscribe<SystemRequest>(Broker.StateTracker_Request_Queue);
         _messageBroker.Subscribe<Event>(Broker.StateTracker_Event_Queue);
         _messageBroker.Subscribe<SystemException>(Broker.StateTracker_Exception_Queue);
+        _messageBroker.Subscribe<Log>(Broker.StateTracker_Log_Queue);
 
         return Task.CompletedTask;
     }

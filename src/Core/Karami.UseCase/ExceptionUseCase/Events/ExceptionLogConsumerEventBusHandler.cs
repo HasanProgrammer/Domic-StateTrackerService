@@ -1,5 +1,4 @@
-﻿using Karami.Core.UseCase.Attributes;
-using Karami.Core.UseCase.Contracts.Interfaces;
+﻿using Karami.Core.UseCase.Contracts.Interfaces;
 using Karami.Domain.Exception.Contracts.Interfaces;
 using Karami.Domain.Exception.Entities;
 
@@ -14,7 +13,6 @@ public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<Sy
     public ExceptionLogConsumerEventBusHandler(IExceptionQueryRepository exceptionQueryRepository) 
         => _exceptionQueryRepository = exceptionQueryRepository;
     
-    [WithMaxRetry(Count = 5)]
     public void Handle(SystemException message)
     {
         var exceptionQuery = new SystemExceptionQuery {

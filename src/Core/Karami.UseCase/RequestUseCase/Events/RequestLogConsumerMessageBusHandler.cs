@@ -1,5 +1,4 @@
 ﻿using Karami.Core.Domain.Entities;
-using Karami.Core.UseCase.Attributes;
 using Karami.Core.UseCase.Contracts.Interfaces;
 using Karami.Domain.Request.Contracts.Interfaces;
 using Karami.Domain.Request.Entities;
@@ -13,7 +12,6 @@ public class RequestLogConsumerMessageBusHandler : IConsumerMessageBusHandler<Sy
     public RequestLogConsumerMessageBusHandler(IRequestQueryRepository requestQueryRepository) 
         => _requestQueryRepository = requestQueryRepository;
     
-    [WithMaxRetry(Count = 5)]
     public void Handle(SystemRequest message)
     {
         var requestQuery = new SystemRequestQuery {
