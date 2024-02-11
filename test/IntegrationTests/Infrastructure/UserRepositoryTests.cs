@@ -1,4 +1,4 @@
-using Karami.Infrastructure.Implementations.Domain.Repositories;
+using Domic.Infrastructure.Implementations.Domain.Repositories;
 using Xunit;
 
 namespace Infrastructure;
