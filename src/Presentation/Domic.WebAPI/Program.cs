@@ -21,7 +21,7 @@ builder.RegisterELK();
 builder.RegisterMongoDbDriver();
 builder.RegisterQueryRepositories();
 builder.RegisterMessageBroker();
-builder.RegisterJobs();
+builder.RegisterMessagesSubscriber();
 builder.RegisterServices();
 
 builder.Services.AddMvc();

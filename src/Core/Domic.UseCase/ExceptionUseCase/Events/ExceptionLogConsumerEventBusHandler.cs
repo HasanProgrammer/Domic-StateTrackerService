@@ -1,4 +1,6 @@
-﻿using Domic.Core.UseCase.Contracts.Interfaces;
+﻿using Domic.Core.Domain.Constants;
+using Domic.Core.UseCase.Commons.Attributes;
+using Domic.Core.UseCase.Contracts.Interfaces;
 using Domic.Domain.Exception.Contracts.Interfaces;
 using Domic.Domain.Exception.Entities;
 
@@ -6,6 +8,7 @@ using SystemException = Domic.Core.Domain.Entities.SystemException;
 
 namespace Domic.UseCase.ExceptionUseCase.Events;
 
+[Consumer(Queue = Broker.StateTracker_Exception_Queue)]
 public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<SystemException>
 {
     private readonly IExceptionQueryRepository _exceptionQueryRepository;

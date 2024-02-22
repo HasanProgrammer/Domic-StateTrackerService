@@ -1,9 +1,12 @@
-﻿using Domic.Core.Domain.Contracts.Interfaces;
+﻿using Domic.Core.Domain.Constants;
+using Domic.Core.Domain.Contracts.Interfaces;
 using Domic.Core.Domain.Entities;
+using Domic.Core.UseCase.Commons.Attributes;
 using Domic.Core.UseCase.Contracts.Interfaces;
 
 namespace Domic.UseCase.EventUseCase.Events;
 
+[Consumer(Queue = Broker.StateTracker_Event_Queue)]
 public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
 {
     private readonly IEventQueryRepository _eventQueryRepository;
