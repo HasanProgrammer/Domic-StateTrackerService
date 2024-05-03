@@ -1,6 +1,8 @@
-﻿using Domic.Core.Domain.Constants;
+﻿using Domic.Core.Common.ClassConsts;
+using Domic.Core.Domain.Constants;
 using Domic.Core.Domain.Contracts.Interfaces;
 using Domic.Core.Domain.Entities;
+using Domic.Core.UseCase.Attributes;
 using Domic.Core.UseCase.Commons.Attributes;
 using Domic.Core.UseCase.Contracts.Interfaces;
 
@@ -14,7 +16,10 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
     public EventLogConsumerEventBusHandler(IEventQueryRepository eventQueryRepository) 
         => _eventQueryRepository = eventQueryRepository;
     
-    public void Handle(Event message)
+    public void Handle(Event message){}
+
+    [TransactionConfig(Type = TransactionType.Query)]
+    public Task HandleAsync(Event message, CancellationToken cancellationToken)
     {
         var eventQuery = new EventQuery {
             Type    = message.Type    ,
@@ -30,5 +35,7 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
         };
         
         _eventQueryRepository.Add(eventQuery);
+
+        return Task.CompletedTask;
     }
 }

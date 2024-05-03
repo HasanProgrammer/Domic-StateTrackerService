@@ -1,5 +1,7 @@
-﻿using Domic.Core.Domain.Constants;
+﻿using Domic.Core.Common.ClassConsts;
+using Domic.Core.Domain.Constants;
 using Domic.Core.Domain.Entities;
+using Domic.Core.UseCase.Attributes;
 using Domic.Core.UseCase.Commons.Attributes;
 using Domic.Core.UseCase.Contracts.Interfaces;
 using Domic.Domain.Request.Contracts.Interfaces;
@@ -15,7 +17,10 @@ public class RequestLogConsumerMessageBusHandler : IConsumerMessageBusHandler<Sy
     public RequestLogConsumerMessageBusHandler(IRequestQueryRepository requestQueryRepository) 
         => _requestQueryRepository = requestQueryRepository;
     
-    public void Handle(SystemRequest message)
+    public void Handle(SystemRequest message){}
+
+    [TransactionConfig(Type = TransactionType.Query)]
+    public Task HandleAsync(SystemRequest message, CancellationToken cancellationToken)
     {
         var requestQuery = new SystemRequestQuery {
             IpClient = message.IpClient ,
@@ -30,5 +35,7 @@ public class RequestLogConsumerMessageBusHandler : IConsumerMessageBusHandler<Sy
         };
             
         _requestQueryRepository.Add(requestQuery);
+
+        return Task.CompletedTask;
     }
 }

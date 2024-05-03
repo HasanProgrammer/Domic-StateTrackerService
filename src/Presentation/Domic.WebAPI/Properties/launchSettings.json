@@ -17,6 +17,7 @@
       "applicationUrl": "https://localhost:6001;http://localhost:6000",
       "environmentVariables": {
         "Elastic-Host": "http://localhost:9200",
+        "Elastic-Index": "statetracker",
         "Elastic-Username": "",
         "Elastic-Password": "",
         "E-RabbitMQ-Host": "localhost",
@@ -28,7 +29,7 @@
         "I-RabbitMQ-Username": "",
         "I-RabbitMQ-Password": "",
         "RedisConnectionString": "",
-        "MongoConnectionString": "mongodb://domic:Domic123!@#@localhost:27017",
+        "MongoConnectionString": "mongodb://domic:434624@localhost:27017",
         "C-SqlServerConnectionString": "",
         "Q-SqlServerConnectionString": "",
         "Host": "localhost",

@@ -1,5 +1,7 @@
-﻿using Domic.Core.Domain.Constants;
+﻿using Domic.Core.Common.ClassConsts;
+using Domic.Core.Domain.Constants;
 using Domic.Core.Domain.Entities;
+using Domic.Core.UseCase.Attributes;
 using Domic.Core.UseCase.Commons.Attributes;
 using Domic.Core.UseCase.Contracts.Interfaces;
 using Domic.Domain.Request.Contracts.Interfaces;
@@ -15,7 +17,10 @@ public class LogConsumerEventBusHandler : IConsumerMessageBusHandler<Log>
     public LogConsumerEventBusHandler(ILogQueryRepository logQueryRepository) 
         => _logQueryRepository = logQueryRepository;
     
-    public void Handle(Log message)
+    public void Handle(Log message){}
+
+    [TransactionConfig(Type = TransactionType.Query)]
+    public Task HandleAsync(Log message, CancellationToken cancellationToken)
     {
         var logQuery = new LogQuery {
             UniqueKey   = message.UniqueKey   ,
@@ -24,5 +29,7 @@ public class LogConsumerEventBusHandler : IConsumerMessageBusHandler<Log>
         };
         
         _logQueryRepository.Add(logQuery);
+
+        return Task.CompletedTask;
     }
 }

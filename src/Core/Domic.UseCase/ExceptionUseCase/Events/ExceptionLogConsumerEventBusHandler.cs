@@ -1,4 +1,6 @@
-﻿using Domic.Core.Domain.Constants;
+﻿using Domic.Core.Common.ClassConsts;
+using Domic.Core.Domain.Constants;
+using Domic.Core.UseCase.Attributes;
 using Domic.Core.UseCase.Commons.Attributes;
 using Domic.Core.UseCase.Contracts.Interfaces;
 using Domic.Domain.Exception.Contracts.Interfaces;
@@ -16,7 +18,10 @@ public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<Sy
     public ExceptionLogConsumerEventBusHandler(IExceptionQueryRepository exceptionQueryRepository) 
         => _exceptionQueryRepository = exceptionQueryRepository;
     
-    public void Handle(SystemException message)
+    public void Handle(SystemException message){}
+
+    [TransactionConfig(Type = TransactionType.Query)]
+    public Task HandleAsync(SystemException message, CancellationToken cancellationToken)
     {
         var exceptionQuery = new SystemExceptionQuery {
             Service   = message.Service   ,
@@ -31,5 +36,7 @@ public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<Sy
         };
             
         _exceptionQueryRepository.Add(exceptionQuery);
+
+        return Task.CompletedTask;
     }
 }
