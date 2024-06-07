@@ -6,17 +6,21 @@ namespace Domic.Infrastructure.Implementations.Domain.Repositories;
 
 public class QueryUnitOfWork(MongoClient client) : IQueryUnitOfWork
 {
-    private IClientSessionHandle _clientSession;
+    public void Transaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted){}
 
-    public void Transaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-    {
-        _clientSession = client.StartSession(); //Resource
-        _clientSession.StartTransaction();
-    }
+    public Task TransactionAsync(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted,
+        CancellationToken cancellationToken = new CancellationToken()
+    ) => Task.CompletedTask;
 
-    public void Commit() => _clientSession?.CommitTransaction();
+    public void Commit(){}
 
-    public void Rollback() => _clientSession?.AbortTransaction();
+    public Task CommitAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
-    public void Dispose() => _clientSession?.Dispose();
+    public void Rollback(){}
+
+    public Task RollbackAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+
+    public void Dispose(){}
+
+    public ValueTask DisposeAsync() => ValueTask.CompletedTask;
 }
