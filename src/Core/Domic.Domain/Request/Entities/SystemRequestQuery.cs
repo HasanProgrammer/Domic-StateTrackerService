@@ -13,6 +13,4 @@ public class SystemRequestQuery : BaseEntityQuery<ObjectId>
     
     public BsonDateTime CreatedAt_EnglishDate { get; set; }
     public string CreatedAt_PersianDate       { get; set; }
-    public BsonDateTime UpdatedAt_EnglishDate { get; set; }
-    public string UpdatedAt_PersianDate       { get; set; }
 }

@@ -30,9 +30,7 @@ public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<Sy
             Exception = message.Exception ,
             IsActive  = message.IsActive  ,
             CreatedAt_EnglishDate = message.CreatedAt_EnglishDate ,
-            CreatedAt_PersianDate = message.CreatedAt_PersianDate ,
-            UpdatedAt_EnglishDate = message.UpdatedAt_EnglishDate ,
-            UpdatedAt_PersianDate = message.UpdatedAt_PersianDate
+            CreatedAt_PersianDate = message.CreatedAt_PersianDate
         };
             
         _exceptionQueryRepository.Add(exceptionQuery);

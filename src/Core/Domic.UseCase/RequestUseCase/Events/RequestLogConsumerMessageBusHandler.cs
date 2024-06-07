@@ -29,9 +29,7 @@ public class RequestLogConsumerMessageBusHandler : IConsumerMessageBusHandler<Sy
             Header   = message.Header   ,
             Payload  = message.Payload  ,
             CreatedAt_EnglishDate = message.CreatedAt_EnglishDate ,
-            CreatedAt_PersianDate = message.CreatedAt_PersianDate ,
-            UpdatedAt_EnglishDate = message.UpdatedAt_EnglishDate ,
-            UpdatedAt_PersianDate = message.UpdatedAt_PersianDate
+            CreatedAt_PersianDate = message.CreatedAt_PersianDate
         };
             
         _requestQueryRepository.Add(requestQuery);

@@ -29,9 +29,7 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
             Action  = message.Action  ,
             User    = message.User    ,
             CreatedAt_EnglishDate = message.CreatedAt_EnglishDate ,
-            CreatedAt_PersianDate = message.CreatedAt_PersianDate ,
-            UpdatedAt_EnglishDate = message.UpdatedAt_EnglishDate ,
-            UpdatedAt_PersianDate = message.UpdatedAt_PersianDate
+            CreatedAt_PersianDate = message.CreatedAt_PersianDate
         };
         
         _eventQueryRepository.Add(eventQuery);

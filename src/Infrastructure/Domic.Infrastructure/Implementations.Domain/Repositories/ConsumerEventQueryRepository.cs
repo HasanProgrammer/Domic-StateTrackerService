@@ -17,7 +17,7 @@ public class ConsumerEventQueryRepository : IConsumerEventQueryRepository
     {
         var result = _collection.FindSync(query => query.MessageId == id as string);
 
-        if (result.First() is null) return null;
+        if (result.FirstOrDefault() is null) return null;
 
         return new();
     }
@@ -27,7 +27,7 @@ public class ConsumerEventQueryRepository : IConsumerEventQueryRepository
         var result =
             await _collection.FindAsync(query => query.MessageId == id as string, cancellationToken: cancellationToken);
 
-        if (result.First() is null) return null;
+        if (result.FirstOrDefault() is null) return null;
 
         return new();
     }
