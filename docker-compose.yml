@@ -33,7 +33,8 @@ services:
       - I-RabbitMQ-Port=
       - I-RabbitMQ-Username=
       - I-RabbitMQ-Password=
-      - RedisConnectionString=
+      - E-RedisConnectionString=
+      - I-RedisConnectionString=
       - MongoConnectionString=mongodb://sa:Hasan313313!!@domic.state.tracker.mongo:27017
       - C-SqlServerConnectionString=
       - Q-SqlServerConnectionString=
