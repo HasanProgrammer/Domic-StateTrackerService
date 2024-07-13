@@ -1,4 +1,39 @@
 {
   "IsExternalBrokerConsumingAsync": true,
-  "IsInternalBrokerConsumingAsync": false
+  "IsInternalBrokerConsumingAsync": false,
+  "ExternalQueueConfig": {
+    "Throttle": [
+      {
+        "Active": false,
+        "Queue": "StateTracker_Request_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      },
+      {
+        "Active": false,
+        "Queue": "StateTracker_Log_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      },
+      {
+        "Active": false,
+        "Queue": "StateTracker_Exception_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      },
+      {
+        "Active": false,
+        "Queue": "StateTracker_Event_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      }
+    ]
+  },
+  "InternalQueueConfig": {
+    "Throttle": []
+  }
 }
