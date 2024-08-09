@@ -35,7 +35,7 @@ services:
       - I-RabbitMQ-Password=
       - E-RedisConnectionString=
       - I-RedisConnectionString=
-      - MongoConnectionString=mongodb://sa:Hasan313313!!@domic.state.tracker.mongo:27017
+      - MongoConnectionString=mongodb://sa:434624@domic.state.tracker.mongo:27017
       - C-SqlServerConnectionString=
       - Q-SqlServerConnectionString=
       - Host=domic.state.tracker.api
@@ -61,7 +61,7 @@ services:
 
 volumes:
   log:
-    
+
 networks:
   domic:
     external: true
