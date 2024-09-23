@@ -21,6 +21,7 @@ builder.RegisterELK();
 builder.RegisterMongoDbDriver();
 builder.RegisterQueryRepositories();
 builder.RegisterMessageBroker();
+builder.RegisterEventStreamBroker();
 builder.RegisterMessagesSubscriber();
 builder.RegisterServices();
 
