@@ -5,13 +5,14 @@ services:
   domic.state.tracker.api:
     networks:
       - domic
-    image: state_tracker_service:1.0.0
-    deploy:
-      resources:
-        limits:
-          memory: 150M
-        reservations:
-          memory: 150M
+    image: state_tracker_service_api_image:1.0.0
+    container_name: "state_tracker_service_api"
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 150M
+#        reservations:
+#          memory: 150M
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,18 +23,19 @@ services:
       - log:/app/CoreLogs
       - ~\.aspnet\https\:/https/
     environment:
-      - Elastic-Host=http://localhost:9200
-      - Elastic-Username=
-      - Elastic-Password=
-      - E-RabbitMQ-Host=host.docker.internal
+      - Elastic-Host=http://domic.elastic.search:9200
+      - Elastic-Index=ticket
+      - Elastic-Username=domic
+      - Elastic-Password=Domic123!@#
+      - E-RabbitMQ-Host=domic.rabbit.mq
       - E-RabbitMQ-Port=5672
-      - E-RabbitMQ-Username=guest
-      - E-RabbitMQ-Password=guest
+      - E-RabbitMQ-Username=domic
+      - E-RabbitMQ-Password=Domic123!@#
       - I-RabbitMQ-Host=
       - I-RabbitMQ-Port=
       - I-RabbitMQ-Username=
       - I-RabbitMQ-Password=
-      - E-RedisConnectionString=
+      - E-RedisConnectionString=domic.redis:6379
       - I-RedisConnectionString=
       - MongoConnectionString=mongodb://sa:434624@domic.state.tracker.mongo:27017
       - C-SqlServerConnectionString=
@@ -42,7 +44,7 @@ services:
       - Port=443
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=Dotris313@313%%
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Domic123!@#
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Karami.WebAPI.pfx
     depends_on: 
       - domic.state.tracker.mongo
@@ -52,12 +54,12 @@ services:
       - domic
     image: mongo
     container_name: 'state_tracker_mongo'
-    restart: always
+    restart: on-failure
     ports:
       - 27017:27017
     environment:
       - MONGO_INITDB_ROOT_USERNAME=sa
-      - MONGO_INITDB_ROOT_PASSWORD=Hasan313313!!
+      - MONGO_INITDB_ROOT_PASSWORD=434624
 
 volumes:
   log:
