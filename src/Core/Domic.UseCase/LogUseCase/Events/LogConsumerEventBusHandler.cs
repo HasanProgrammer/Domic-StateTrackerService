@@ -32,4 +32,9 @@ public class LogConsumerEventBusHandler : IConsumerMessageBusHandler<Log>
 
         return Task.CompletedTask;
     }
+
+    public void AfterTransactionHandle(Log message){}
+
+    public Task AfterTransactionHandleAsync(Log message, CancellationToken cancellationToken)
+        => Task.CompletedTask;
 }

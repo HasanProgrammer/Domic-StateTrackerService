@@ -36,4 +36,9 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
 
         return Task.CompletedTask;
     }
+
+    public void AfterTransactionHandle(Event message){}
+
+    public Task AfterTransactionHandleAsync(Event message, CancellationToken cancellationToken)
+        => Task.CompletedTask;
 }

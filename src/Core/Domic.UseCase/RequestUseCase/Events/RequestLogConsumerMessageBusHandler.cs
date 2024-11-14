@@ -36,4 +36,9 @@ public class RequestLogConsumerMessageBusHandler : IConsumerMessageBusHandler<Sy
 
         return Task.CompletedTask;
     }
+
+    public void AfterTransactionHandle(SystemRequest message){}
+
+    public Task AfterTransactionHandleAsync(SystemRequest message, CancellationToken cancellationToken)
+        => Task.CompletedTask;
 }

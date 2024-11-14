@@ -37,4 +37,9 @@ public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<Sy
 
         return Task.CompletedTask;
     }
+
+    public void AfterTransactionHandle(SystemException message){}
+
+    public Task AfterTransactionHandleAsync(SystemException message, CancellationToken cancellationToken)
+        => Task.CompletedTask;
 }
