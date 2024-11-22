@@ -16,8 +16,8 @@ public class LogConsumerEventBusHandler : IConsumerMessageBusHandler<Log>
 
     public LogConsumerEventBusHandler(ILogQueryRepository logQueryRepository) 
         => _logQueryRepository = logQueryRepository;
-    
-    public void Handle(Log message){}
+
+    public Task BeforeHandleAsync(Log message, CancellationToken cancellationToken) => Task.CompletedTask;
 
     [TransactionConfig(Type = TransactionType.Query)]
     public Task HandleAsync(Log message, CancellationToken cancellationToken)
@@ -33,8 +33,6 @@ public class LogConsumerEventBusHandler : IConsumerMessageBusHandler<Log>
         return Task.CompletedTask;
     }
 
-    public void AfterTransactionHandle(Log message){}
-
-    public Task AfterTransactionHandleAsync(Log message, CancellationToken cancellationToken)
+    public Task AfterHandleAsync(Log message, CancellationToken cancellationToken)
         => Task.CompletedTask;
 }

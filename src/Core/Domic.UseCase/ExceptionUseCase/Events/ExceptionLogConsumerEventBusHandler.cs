@@ -17,8 +17,8 @@ public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<Sy
 
     public ExceptionLogConsumerEventBusHandler(IExceptionQueryRepository exceptionQueryRepository) 
         => _exceptionQueryRepository = exceptionQueryRepository;
-    
-    public void Handle(SystemException message){}
+
+    public Task BeforeHandleAsync(SystemException message, CancellationToken cancellationToken) => Task.CompletedTask;
 
     [TransactionConfig(Type = TransactionType.Query)]
     public Task HandleAsync(SystemException message, CancellationToken cancellationToken)
@@ -38,8 +38,6 @@ public class ExceptionLogConsumerEventBusHandler : IConsumerMessageBusHandler<Sy
         return Task.CompletedTask;
     }
 
-    public void AfterTransactionHandle(SystemException message){}
-
-    public Task AfterTransactionHandleAsync(SystemException message, CancellationToken cancellationToken)
+    public Task AfterHandleAsync(SystemException message, CancellationToken cancellationToken)
         => Task.CompletedTask;
 }

@@ -16,8 +16,8 @@ public class RequestLogConsumerMessageBusHandler : IConsumerMessageBusHandler<Sy
 
     public RequestLogConsumerMessageBusHandler(IRequestQueryRepository requestQueryRepository) 
         => _requestQueryRepository = requestQueryRepository;
-    
-    public void Handle(SystemRequest message){}
+
+    public Task BeforeHandleAsync(SystemRequest message, CancellationToken cancellationToken) => Task.CompletedTask;
 
     [TransactionConfig(Type = TransactionType.Query)]
     public Task HandleAsync(SystemRequest message, CancellationToken cancellationToken)
@@ -37,8 +37,6 @@ public class RequestLogConsumerMessageBusHandler : IConsumerMessageBusHandler<Sy
         return Task.CompletedTask;
     }
 
-    public void AfterTransactionHandle(SystemRequest message){}
-
-    public Task AfterTransactionHandleAsync(SystemRequest message, CancellationToken cancellationToken)
+    public Task AfterHandleAsync(SystemRequest message, CancellationToken cancellationToken)
         => Task.CompletedTask;
 }

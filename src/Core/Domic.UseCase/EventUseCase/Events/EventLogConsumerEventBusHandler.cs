@@ -15,8 +15,8 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
 
     public EventLogConsumerEventBusHandler(IEventQueryRepository eventQueryRepository) 
         => _eventQueryRepository = eventQueryRepository;
-    
-    public void Handle(Event message){}
+
+    public Task BeforeHandleAsync(Event message, CancellationToken cancellationToken) => Task.CompletedTask;
 
     [TransactionConfig(Type = TransactionType.Query)]
     public Task HandleAsync(Event message, CancellationToken cancellationToken)
@@ -37,8 +37,6 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
         return Task.CompletedTask;
     }
 
-    public void AfterTransactionHandle(Event message){}
-
-    public Task AfterTransactionHandleAsync(Event message, CancellationToken cancellationToken)
+    public Task AfterHandleAsync(Event message, CancellationToken cancellationToken)
         => Task.CompletedTask;
 }
