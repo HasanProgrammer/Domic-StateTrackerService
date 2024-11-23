@@ -1,9 +1,8 @@
 ﻿using Domic.Core.Domain.Contracts.Abstracts;
-using MongoDB.Bson;
 
 namespace Domic.Domain.Request.Entities;
 
-public class LogQuery : BaseEntityQuery<ObjectId>
+public class LogQuery : BaseEntityQuery<string>
 {
     public string UniqueKey   { get; set; }
     public string ServiceName { get; set; }

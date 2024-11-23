@@ -1,9 +1,8 @@
 ﻿using Domic.Core.Domain.Contracts.Abstracts;
-using MongoDB.Bson;
 
 namespace Domic.Core.Domain.Entities;
 
-public class EventQuery : BaseEntityQuery<ObjectId>
+public class EventQuery : BaseEntityQuery<string>
 {
     public string Type    { get; set; } //Name Of Event
     public string Service { get; set; } //Name Of Service
@@ -12,6 +11,6 @@ public class EventQuery : BaseEntityQuery<ObjectId>
     public string Action  { get; set; } //CREATE | UPDATE | DELETE
     public string User    { get; set; } //Username
     
-    public BsonDateTime CreatedAt_EnglishDate { get; set; }
-    public string CreatedAt_PersianDate       { get; set; }
+    public DateTime CreatedAt_EnglishDate { get; set; }
+    public string CreatedAt_PersianDate   { get; set; }
 }

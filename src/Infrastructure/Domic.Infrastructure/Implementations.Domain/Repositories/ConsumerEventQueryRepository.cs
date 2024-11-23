@@ -11,7 +11,7 @@ public class ConsumerEventQueryRepository : IConsumerEventQueryRepository
     
     public ConsumerEventQueryRepository(MongoClient mongoClient) 
         => _collection =
-            mongoClient.GetDatabase("StateTrackerService").GetCollection<ConsumerEventQueryModel>("ConsumerEventQuery");
+            mongoClient.GetDatabase("StateTrackerService").GetCollection<ConsumerEventQueryModel>("ConsumerEvent");
     
     public ConsumerEventQuery FindById(object id)
     {
