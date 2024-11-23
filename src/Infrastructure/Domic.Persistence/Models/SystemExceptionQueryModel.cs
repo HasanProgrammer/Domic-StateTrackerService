@@ -1,11 +1,9 @@
-﻿using Domic.Core.Domain.Enumerations;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 
 namespace Domic.Persistence.Models;
 
 public class SystemExceptionQueryModel
 {
-    public BsonInt64 Id      { get; set; }
     public string Service    { get; set; }
     public string Action     { get; set; }
     public string Message    { get; set; }

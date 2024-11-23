@@ -4,7 +4,6 @@ namespace Domic.Persistence.Models;
 
 public class SystemRequestQueryModel
 {
-    public BsonInt64 Id    { get; set; }
     public string IpClient { get; set; }
     public string Service  { get; set; }
     public string Action   { get; set; }

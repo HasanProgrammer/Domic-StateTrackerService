@@ -4,7 +4,6 @@ namespace Domic.Persistence.Models;
 
 public class ConsumerEventQueryModel
 {
-    public BsonInt64 Id     { get; set; }
     public string MessageId { get; set; }
     public string Type      { get; set; }
     public int CountOfRetry { get; set; }
