@@ -22,6 +22,7 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
     public Task HandleAsync(Event message, CancellationToken cancellationToken)
     {
         var eventQuery = new EventQuery {
+            Id      = message.Id      , 
             Type    = message.Type    ,
             Service = message.Service ,
             Payload = message.Payload ,
