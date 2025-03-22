@@ -1,0 +1,69 @@
+name: 'state_tracker_service'
+
+services:
+  
+  domic.state.tracker.api:
+    networks:
+      - domic
+    image: state_tracker_service_api_image:1.0.0
+    container_name: "state_tracker_service_api"
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 150M
+#        reservations:
+#          memory: 150M
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "1140-1160:443"
+    volumes:
+      - log:/app/CoreLogs
+      - ~\.aspnet\https\:/https/
+    environment:
+      - Elastic-Host=http://domic.elastic.search:9200
+      - Elastic-Index=statetracker
+      - Elastic-Username=domic
+      - Elastic-Password=Domic123!@#
+      - E-RabbitMQ-Host=domic.rabbit.mq
+      - E-RabbitMQ-Port=5672
+      - E-RabbitMQ-Username=domic
+      - E-RabbitMQ-Password=Domic123!@#
+      - I-RabbitMQ-Host=
+      - I-RabbitMQ-Port=
+      - I-RabbitMQ-Username=
+      - I-RabbitMQ-Password=
+      - E-RedisConnectionString=domic.redis:6379
+      - I-RedisConnectionString=
+      - MongoConnectionString=mongodb://sa:434624@domic.state.tracker.mongo:27017
+      - C-SqlServerConnectionString=
+      - Q-SqlServerConnectionString=
+      - Host=domic.state.tracker.api
+      - Port=443
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Domic123!@#
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Domic.WebAPI.pfx
+    depends_on: 
+      - domic.state.tracker.mongo
+  
+  domic.state.tracker.mongo:
+    networks:
+      - domic
+    image: mongo
+    container_name: 'state_tracker_mongo'
+    restart: on-failure
+    ports:
+      - 47017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sa
+      - MONGO_INITDB_ROOT_PASSWORD=434624
+
+volumes:
+  log:
+
+networks:
+  domic:
+    external: true

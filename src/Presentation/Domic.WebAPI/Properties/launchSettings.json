@@ -1,0 +1,53 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:42426",
+      "sslPort": 44383
+    }
+  },
+  "profiles": {
+    "Domic.WebAPI": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:6001;http://localhost:6000",
+      "environmentVariables": {
+        "Elastic-Host": "http://localhost:9200",
+        "Elastic-Index": "statetracker",
+        "Elastic-Username": "domic",
+        "Elastic-Password": "Domic123!@#",
+        "E-RabbitMQ-Host": "localhost",
+        "E-RabbitMQ-Port": "5672",
+        "E-RabbitMQ-Username": "domic",
+        "E-RabbitMQ-Password": "Domic123!@#",
+        "I-RabbitMQ-Host": "",
+        "I-RabbitMQ-Port": "",
+        "I-RabbitMQ-Username": "",
+        "I-RabbitMQ-Password": "",
+        "E-Kafka-Host" : "",
+        "E-Kafka-Username" : "",
+        "E-Kafka-Password" : "",
+        "E-RedisConnectionString": "",
+        "I-RedisConnectionString": "",
+        "MongoConnectionString": "mongodb://domic:434624@localhost:27017",
+        "C-SqlServerConnectionString": "",
+        "Q-SqlServerConnectionString": "",
+        "Host": "localhost",
+        "Port": "6001",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

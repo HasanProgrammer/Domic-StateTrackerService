@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Domic.UseCase\Domic.UseCase.csproj" />
+  </ItemGroup>
+
+  <!--CorePackage | Persistence-->
+  <ItemGroup>
+    <PackageReference Include="Domic.Architecture.Persistence" Version="7.2.9"/>
+  </ItemGroup>
+  <!--CorePackage | Persistence-->
+
+</Project>

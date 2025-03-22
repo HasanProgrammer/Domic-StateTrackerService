@@ -1,0 +1,56 @@
+{
+  "LoggerType": {
+    "Messaging": true,
+    "Streaming": false
+  },
+  "IsExternalBrokerConsumingAsync": true,
+  "IsInternalBrokerConsumingAsync": false,
+  "ExternalTopicConfig": {
+    "Throttle": [
+      {
+        "Active": false,
+        "Topic": "StateTracker",
+        "Limitation": 1000
+      },
+      {
+        "Topic": "StateTrackerService-Retry-StateTracker",
+        "Limitation": 1000
+      }
+    ]
+  },
+  "ExternalQueueConfig": {
+    "Throttle": [
+      {
+        "Active": false,
+        "Queue": "StateTracker_Request_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      },
+      {
+        "Active": false,
+        "Queue": "StateTracker_Log_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      },
+      {
+        "Active": false,
+        "Queue": "StateTracker_Exception_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      },
+      {
+        "Active": false,
+        "Queue": "StateTracker_Event_Queue",
+        "Size": 0,
+        "Limitation": 1000,
+        "IsGlobally": false
+      }
+    ]
+  },
+  "InternalQueueConfig": {
+    "Throttle": []
+  }
+}
