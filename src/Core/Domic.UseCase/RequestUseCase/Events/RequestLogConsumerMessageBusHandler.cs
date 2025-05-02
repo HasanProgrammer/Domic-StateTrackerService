@@ -1,4 +1,4 @@
-﻿using Domic.Core.Common.ClassConsts;
+﻿using Domic.Core.Common.ClassEnums;
 using Domic.Core.Domain.Constants;
 using Domic.Core.Domain.Entities;
 using Domic.Core.UseCase.Attributes;
