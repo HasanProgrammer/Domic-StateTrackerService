@@ -28,7 +28,6 @@ public class EventLogConsumerEventBusHandler : IConsumerMessageBusHandler<Event>
             Payload = message.Payload ,
             Table   = message.Table   ,
             Action  = message.Action  ,
-            User    = message.User    ,
             CreatedAt_EnglishDate = message.CreatedAt_EnglishDate ,
             CreatedAt_PersianDate = message.CreatedAt_PersianDate
         };
